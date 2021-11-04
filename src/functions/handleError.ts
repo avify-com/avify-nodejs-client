@@ -12,7 +12,8 @@ const handleError = (apiResponse: any): ApiResponse<any> => {
         message: 'Oops parece que tenemos un problema con la conexión'
       }
     };
-  } else if (apiResponse?.response.status === 404) {
+  }
+  if (apiResponse?.response.status === 404) {
     return {
       success: false,
       httpCode: 404,
@@ -21,10 +22,8 @@ const handleError = (apiResponse: any): ApiResponse<any> => {
         message: 'Oops parece que tenemos un problema con la conexión'
       }
     };
-  } else if (
-    apiResponse.response?.status &&
-    apiResponse.response.status > 400
-  ) {
+  }
+  if (apiResponse.response?.status && apiResponse.response.status > 400) {
     return {
       success: false,
       httpCode: apiResponse.response.status,
