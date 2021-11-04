@@ -4,7 +4,7 @@
 
 
 
-![NPM Downloads](https://img.shields.io/npm/dw/:avify-client)   [![GitHub issues open](https://img.shields.io/github/issues/bananacode-co/avify-npm/shconfparser.svg)](https://github.com/bananacode-co/avify-npm/issues)
+![NPM Downloads](https://img.shields.io/npm/dw/:avify-client)   [![GitHub issues open](https://img.shields.io/github/issues/bananacode-co/avify-npm)](https://github.com/bananacode-co/avify-npm/issues)
 
 
 
