@@ -1,6 +1,6 @@
 {
   "name": "avify-client",
-  "version": "0.0.13",
+  "version": "0.0.16",
   "description": "Avify Javascript Client Library",
   "main": "lib/index.js",
   "types": "lib",

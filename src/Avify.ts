@@ -1,15 +1,27 @@
-import axios, { AxiosResponse } from 'axios';
-import { ApiResponse, GetPublicKeyResponse } from './@types';
-
+import axios from 'axios';
+import handleError from './functions/handleError';
+export interface ApiResponse<T> {
+  success: boolean;
+  httpCode: number;
+  data?: T;
+  error?: {
+    message: string;
+    code: string;
+  };
+}
+export interface GetPublicKeyResponse {
+  key: string;
+}
 type Mode = 'sandbox' | 'production';
 type Version = 'v1';
 interface Constructor {
   mode: Mode;
   version: Version;
 }
+
 class Avify {
   public prodBaseUrl = 'https://api.avify.co';
-  public sadboxBaseUrl = 'http://localhost:3000';
+  public sadboxBaseUrl = 'https://sandboxapi.avify.co';
   public baseUrl: string;
   public mode: string;
   constructor({ mode, version }: Constructor) {
@@ -21,34 +33,15 @@ class Avify {
   }
   async getPublicKey(): Promise<ApiResponse<GetPublicKeyResponse>> {
     const response = await axios
-      .get(this.baseUrl + '/gateway/key')
+      .get(this.baseUrl + '/gateway/key', {
+        timeout: 10000
+      })
       .catch((err) => {
-        if (err.code === 'ECONNREFUSED') {
-          // tslint:disable-next-line: no-console
-          console.error('Error message: ' + err.message);
-        }
         return err;
       });
-    // tslint:disable-next-line: no-console
-    if (!response) {
-      return {
-        success: false,
-        httpCode: 500,
-        error: {
-          code: 'G-000',
-          message: 'Oops parece que tenemos un problema con la conexión'
-        }
-      };
-    }
-    if (response.response?.status && response.response.status > 400) {
-      return {
-        success: false,
-        httpCode: response.response.status,
-        error: {
-          code: response.response.data.error.code,
-          message: response.response.data.error.displayMessage
-        }
-      };
+    const error = handleError(response);
+    if (error) {
+      return error;
     }
     return {
       data: {
