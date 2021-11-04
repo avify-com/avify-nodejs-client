@@ -1,7 +1,7 @@
 export interface ApiResponse<T> {
   success: boolean;
   httpCode: number;
-  data: T;
+  data?: T;
   error?: {
     message: string;
     code: string;
