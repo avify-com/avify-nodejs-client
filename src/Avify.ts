@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { ApiResponse, GetPublicKeyResponse } from './@types';
 
 type Mode = 'sandbox' | 'production';
@@ -7,19 +8,19 @@ interface Constructor {
   version: Version;
 }
 class Avify {
-  public prodBaseUrl = 'https://localhost:3000';
-  public sadboxBaseUrl = 'https://api.avify.co';
+  public prodBaseUrl = 'https://api.avify.co';
+  public sadboxBaseUrl = 'https://sandboxapi.avify.co';
   public baseUrl: string;
   public mode: string;
   constructor({ mode, version }: Constructor) {
     this.mode = mode;
     this.baseUrl =
       (mode === 'sandbox' ? this.sadboxBaseUrl : this.prodBaseUrl) +
-      '/' +
+      '/api/' +
       version;
   }
   async getPublicKey(): Promise<ApiResponse<GetPublicKeyResponse>> {
-    const response = await fetch(this.baseUrl + '/gateway');
+    const response = await axios.get(this.baseUrl + '/key');
     // tslint:disable-next-line: no-console
     console.log(response);
     return {

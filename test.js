@@ -1,1 +1,0 @@
-const avify = require('./lib');

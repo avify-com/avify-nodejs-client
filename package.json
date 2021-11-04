@@ -1,12 +1,11 @@
 {
   "name": "avify-client",
-  "version": "0.0.10",
+  "version": "0.0.13",
   "description": "Avify Javascript Client Library",
-  "main": "index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib",
   "files": [
-    "lib/**/*",
-    "index.js"
+    "lib/**/*"
   ],
   "scripts": {
     "build": "tsc",
@@ -17,7 +16,8 @@
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "test": "echo No tests specified yet"
+    "test": "echo No tests specified yet",
+    "temp":"node test/index.js"
   },
   "repository": {
     "type": "git",
@@ -42,5 +42,8 @@
     "tslint-config-airbnb": "^5.11.2",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
   }
 }
