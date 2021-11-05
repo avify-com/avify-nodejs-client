@@ -1,6 +1,6 @@
 import { ApiResponse } from '../Avify';
 
-const handleError = (apiResponse: any): ApiResponse<any> => {
+const handleError = (apiResponse: any): ApiResponse<any> | undefined => {
   if (apiResponse?.code === 'ECONNREFUSED') {
     // tslint:disable-next-line: no-console
     console.error('Error message: ' + apiResponse.message);
@@ -13,7 +13,7 @@ const handleError = (apiResponse: any): ApiResponse<any> => {
       }
     };
   }
-  if (apiResponse?.response.status === 404) {
+  if (apiResponse?.response?.status === 404) {
     return {
       success: false,
       httpCode: 404,
@@ -23,7 +23,7 @@ const handleError = (apiResponse: any): ApiResponse<any> => {
       }
     };
   }
-  if (apiResponse.response?.status && apiResponse.response.status > 400) {
+  if (apiResponse.response?.status && apiResponse.response?.status > 400) {
     return {
       success: false,
       httpCode: apiResponse.response.status,
@@ -33,13 +33,6 @@ const handleError = (apiResponse: any): ApiResponse<any> => {
       }
     };
   }
-  return {
-    success: false,
-    httpCode: 404,
-    error: {
-      code: 'G-000',
-      message: 'Oops parece que tenemos un problema con la conexión'
-    }
-  };
+  return undefined;
 };
 export default handleError;
