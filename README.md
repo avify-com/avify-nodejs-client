@@ -8,6 +8,48 @@
 
 
 
+### INSTALLATION
+
+```bash
+npm i avify-client
+```
+
+### USAGE
+
+* Javascript
+
+```javascript
+const Avify = require('avify-client');
+const avify = new Avify({ mode: 'sandbox', version: 'v1' });
+avify.checkout({
+    cardHolder: 'John Doe',
+    cvc: '248',
+    expMonth: '06',
+    expYear: '2023',
+    carcNumber: '2424242424242424',
+})
+.then((res) => {
+	console.log(res.data);
+});
+```
+
+- Typescript
+
+```typescript
+import Avify from 'avify-client';
+const avify = new Avify({ mode: 'sandbox', version: 'v1' });
+avify.checkout({
+    cardHolder: 'John Doe',
+    cvc: '248',
+    expMonth: '06',
+    expYear: '2023',
+    carcNumber: '2424242424242424',
+})
+.then((res) => {
+	console.log(res.data);
+});
+```
+
 ### TODO
 * Modify test scripts
 
