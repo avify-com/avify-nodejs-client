@@ -1,6 +1,6 @@
 {
   "name": "avify-client",
-  "version": "0.0.17",
+  "version": "0.0.20",
   "description": "Avify Javascript Client Library",
   "main": "lib/index.js",
   "types": "lib",
@@ -17,7 +17,7 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
     "test": "echo No tests specified yet",
-    "temp":"node test/index.js"
+    "temp": "node test/index.js"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,7 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "axios": "^0.24.0"
+    "axios": "^0.24.0",
+    "jsencrypt": "^3.2.1"
   }
 }

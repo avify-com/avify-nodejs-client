@@ -24,5 +24,11 @@
         "ter-indent": false
 
     },
-    "rulesDirectory": []
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": [
+            "bin",
+            "ascrypto.js"
+        ]
+    }
 }
