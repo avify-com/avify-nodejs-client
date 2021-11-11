@@ -83,7 +83,7 @@ class Avify {
 
     // tslint:disable-next-line: prefer-const
     if (typeof window === 'undefined') {
-      const crypto = require('crypto');
+      const crypto = await import('crypto');
       const buf = Buffer.from(text, 'utf8');
 
       // Encrypting the text
@@ -102,9 +102,9 @@ class Avify {
         httpCode: 200
       };
     }
-    // tslint:disable-next-line: variable-name
-    const JSEncrypt = require('jsencrypt');
-    const jsencrypt = new JSEncrypt();
+    const jsEncrypt = (await import('jsencrypt')).default;
+
+    const jsencrypt = new jsEncrypt();
     jsencrypt.setPublicKey(pubKey.data?.key || 'nothing');
     const secret = jsencrypt.encrypt(text);
     if (!secret) {
