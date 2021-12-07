@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bananacode-co/avify-npm.git"
+    "url": "git+https://github.com/bananacode-co/avify-nodejs-client.git"
   },
   "keywords": [
     "avify",
@@ -32,9 +32,9 @@
   "author": "Banancode Inc",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bananacode-co/avify-npm/issues"
+    "url": "https://github.com/bananacode-co/avify-nodejs-client/issues"
   },
-  "homepage": "https://github.com/bananacode-co/avify-npm#readme",
+  "homepage": "https://github.com/bananacode-co/avify-nodejs-client#readme",
   "devDependencies": {
     "@types/node": "^16.11.6",
     "prettier": "^2.4.1",

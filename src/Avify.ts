@@ -125,6 +125,7 @@ class Avify {
   }
   async checkout(options: CheckoutOptions): Promise<ApiResponse<any>> {
     const encryptedCard = await this.encrypt(JSON.stringify(options));
+    console.log(encryptedCard);
     const response = await axios
       .post(
         this.baseUrl + '/gateway/checkout',
